@@ -78,7 +78,9 @@ async def openai_server_task(
             return_when="FIRST_COMPLETED",
         )
         if not done:
-            raise TimeoutError(f"Unable to reach OpenAI-compatible server within {timeout} seconds. You can increase this timeout by setting the ART_SERVER_TIMEOUT environment variable.")
+            raise TimeoutError(
+                f"Unable to reach OpenAI-compatible server within {timeout} seconds. You can increase this timeout by setting the ART_SERVER_TIMEOUT environment variable."
+            )
         for task in done:
             task.result()
 
